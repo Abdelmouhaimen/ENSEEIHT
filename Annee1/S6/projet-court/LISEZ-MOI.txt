@@ -1,6 +1,6 @@
 Nom       : Sarhane
 Prénom    : Abdelmouhaimen
-Groupe TP : Ha
+Groupe TP : H
 
 Les « ... » indiquent les endroits à compléter.
 
