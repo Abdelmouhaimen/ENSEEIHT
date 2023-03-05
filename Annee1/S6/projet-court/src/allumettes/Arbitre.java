@@ -12,6 +12,7 @@ public class Arbitre {
 		boolean Abondon = prise == -1;
 		if (Abondon) {
 			jeu.setFini();
+			System.out.print("Abandon de la partie car " + joueurCourant.getNom() + " triche !");
 		}
 		else {
 	        try {
@@ -62,25 +63,30 @@ public class Arbitre {
         	prise = joueurCourant.getPrise(jeu);
         	if (prise  == -1) {
         		if (confiant) {
-	        		this.tricher(jeu);
+	        		this.tricherHumain(jeu);
 	        		prise = nombrePrise(jeu);
         		}
         		else {
-        			System.out.print("Abandon de la partie car " + joueurCourant.getNom() + " triche !");
-        			return -1;
+        			; // prise == -1
         		}
         	}
         	break;
-        // case "tricheur":
-        	// this.strategie = StratTricheur;
+        case "tricheur":
+        	this.tricherTricheur(jeu);
+        	if (!confiant) {
+        		prise = -1;
+        	} else {
+        		prise = joueurCourant.getPrise(jeu);
+        	}
+        	break;
         default:
         	prise = joueurCourant.getPrise(jeu);
 		}		
 		return prise;
 	}
 
-	private void tricher(Jeu jeu) {
-		int nbTriche = 1;
+	private void tricherHumain(Jeu jeu) {
+		final int nbTriche = 1;
 		try { 
 			jeu.retirer(nbTriche);
 		}
@@ -91,6 +97,21 @@ public class Arbitre {
 		System.out.println("[Une allumette en moins, plus que "+ jeu.getNombreAllumettes() +". Chut !]");
 		
 	}
-
+	
+	
+	private void tricherTricheur(Jeu jeu) {
+		final int nbRestant = 2;
+		try {
+			while (jeu.getNombreAllumettes() > 2) {
+				jeu.retirer(Math.min(3, jeu.getNombreAllumettes()-nbRestant));
+			}
+		}
+		catch (CoupInvalideException e) {
+			System.out.println("Impossible !");
+		}
+		
+		System.out.println("[Je triche...]");
+		
+	}
 
 }

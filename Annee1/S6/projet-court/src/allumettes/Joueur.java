@@ -25,17 +25,17 @@ public class Joueur {
             case "rapide":
             	this.strategie = new StratRapide();
                 break;
-            // case "expert":
-            	// this.strategie = StratExpert;
-                // break;
+            case "expert":
+            	this.strategie = new StratExpert();
+                break;
             case "humain":
             	this.strategie = new StratHumain();
             	break;
-            // case "tricheur":
-            	// this.strategie = StratTricheur;
+            case "tricheur":
+            	this.strategie = new StratTricheur();
+            	break;
             default:
                 throw new ConfigurationException("Stratégie inconnue : " + strategie);
-	        
 	    }
 	}
 	
