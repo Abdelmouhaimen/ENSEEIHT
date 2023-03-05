@@ -17,7 +17,7 @@ public class Jouer {
 		try {
 			verifierNombreArguments(args);
 			 // Initialiser le jeu
-            Jeu jeu = new Sujet_jeu(nb_alumettes_initial);
+            JeuReel jeuReel = new JeuReel(nb_alumettes_initial);
 
             // Initialiser les joueurs
             Joueur[] joueurs = new Joueur[2];
@@ -47,10 +47,10 @@ public class Jouer {
             }
 
             // Lancer le jeu
-            while (!jeu.EstFini()) {
-                System.out.println(jeu);
-                arbitre.arbitrer(jeu);
-                if (!jeu.EstFini()) {
+            while (!jeuReel.EstFini()) {
+                System.out.println(jeuReel);
+                arbitre.arbitrer(jeuReel);
+                if (!jeuReel.EstFini()) {
                 	System.out.println();
                 }
             }

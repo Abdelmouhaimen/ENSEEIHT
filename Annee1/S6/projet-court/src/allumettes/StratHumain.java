@@ -18,7 +18,7 @@ public class StratHumain implements Strategie {
 			    	if (jeu.getNombreAllumettes() < 2) {
 			    		System.out.println("[Triche impossible.]");
 			    	} else {
-			    		return -1;
+			    		this.tricherHumain(jeu);
 			    	}
 			    }
 			    else {
@@ -40,6 +40,19 @@ public class StratHumain implements Strategie {
 	@Override
 	public String getStratName() {
 		return StratName;
+	}
+	
+	private void tricherHumain(Jeu jeu) {
+		final int nbTriche = 1;
+		try { 
+			jeu.retirer(nbTriche);
+		}
+		catch (CoupInvalideException e) {
+			System.out.println("Impossible !");
+		}
+		
+		System.out.println("[Une allumette en moins, plus que "+ jeu.getNombreAllumettes() +". Chut !]");
+		
 	}
 
 }
