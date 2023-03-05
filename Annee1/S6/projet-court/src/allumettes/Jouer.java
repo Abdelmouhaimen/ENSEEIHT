@@ -16,6 +16,44 @@ public class Jouer {
 	public static void main(String[] args) {
 		try {
 			verifierNombreArguments(args);
+			 // Initialiser le jeu
+            Jeu jeu = new Sujet_jeu(nb_alumettes_initial);
+
+            // Initialiser les joueurs
+            Joueur[] joueurs = new Joueur[2];
+            int j = 0;
+            if (args.length == 3) {
+            	if (args[0].toLowerCase().equals("-confiant")) {
+            		j = 1;
+            	} else {
+            		throw new ConfigurationException("Arguments invalides");
+            	}
+            }
+            for (int i = 0; i < 2; i++) {
+                String[] joueurArgs = args[i+j].split("@");
+                String nom = joueurArgs[0];
+                String strategie = joueurArgs[1];
+                joueurs[i] = new Joueur(nom, strategie.toLowerCase());
+            }
+
+            // Initialiser l'arbitre
+            Arbitre arbitre = new Arbitre(joueurs[0], joueurs[1]);
+            if (args.length == 3) {
+            	if (args[0].toLowerCase().equals("-confiant")) {
+            		arbitre.setConfiant(true);
+            	} else {
+            		throw new ConfigurationException("Arguments invalides");
+            	}
+            }
+
+            // Lancer le jeu
+            while (!jeu.EstFini()) {
+                System.out.println(jeu);
+                arbitre.arbitrer(jeu);
+                if (!jeu.EstFini()) {
+                	System.out.println();
+                }
+            }
 
 			
 
@@ -27,6 +65,8 @@ public class Jouer {
 		}
 		
 	}
+
+
 
 	private static void verifierNombreArguments(String[] args) {
 		final int nbJoueurs = 2;
@@ -53,5 +93,7 @@ public class Jouer {
 				+ "\n"
 				);
 	}
+	
+	
 
 }

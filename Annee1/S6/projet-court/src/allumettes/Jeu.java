@@ -17,6 +17,10 @@ public interface Jeu {
 	 * @throws CoupInvalideException tentative de prendre un nombre invalide d'allumettes
 	 */
 	void retirer(int nbPrises) throws CoupInvalideException;
+
+	public boolean EstFini();
+
+	public void setFini();
 	
 
 }
