@@ -17,7 +17,7 @@ public class Jouer {
 		try {
 			verifierNombreArguments(args);
 			 // Initialiser le jeu
-            JeuReel jeuReel = new JeuReel(nb_alumettes_initial);
+            Jeu jeuReel = new JeuReel(nb_alumettes_initial);
 
             // Initialiser les joueurs
             Joueur[] joueurs = new Joueur[2];

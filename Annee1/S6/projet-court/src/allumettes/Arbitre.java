@@ -7,7 +7,7 @@ public class Arbitre {
 	Joueur[] joueurs = new Joueur[2];
 	private Joueur joueurCourant;
 	
-	public void arbitrer(JeuReel jeuReel) {
+	public void arbitrer(Jeu jeuReel) {
 		Jeu procuration = new Procuration(jeuReel);
 		int prise = 0;
 		boolean Abondon = false;

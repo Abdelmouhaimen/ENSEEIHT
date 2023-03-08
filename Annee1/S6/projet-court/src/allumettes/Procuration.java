@@ -2,10 +2,10 @@ package allumettes;
 
 public class Procuration implements Jeu {
 	
-	private JeuReel jeuReel;
+	private Jeu jeuReel;
 	
-	public Procuration(JeuReel jeu) {
-		this.jeuReel = jeu;
+	public Procuration(Jeu jeuReel2) {
+		this.jeuReel = jeuReel2;
 	}
 
 	@Override
