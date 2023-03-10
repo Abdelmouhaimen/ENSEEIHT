@@ -26,7 +26,7 @@ public class Arbitre {
 		}
 		else {
 	        try {
-	        	System.out.println(joueurCourant.getNom() + " prend " + prise + " allumette(s).");
+	        	System.out.println(joueurCourant.getNom() + " prend " + prise + (prise > 1 ? " allumettes.": " allumette."));
 	        	jeuReel.retirer(prise);
 	        } catch (CoupInvalideException e) {
 	            System.out.println("Impossible ! Nombre invalide : " + e.getCoup() + " " + e.getProbleme());
