@@ -18,23 +18,24 @@ public class Jouer {
 			verifierNombreArguments(args);
 			// Initialiser le jeu
             Jeu jeuReel = new JeuReel(nb_alumettes_initial);
-
+            
+            // verifier que l'argument -confiant existe s'il y a 3 arguments
+            if ((args.length == 3) && (!args[0].toLowerCase().equals("-confiant"))) {
+            	throw new ConfigurationException("Arguments invalides");
+            }
+            
             // Initialiser les joueurs
             Joueur[] joueurs = new Joueur[2];
-            int j = 0;
-            if (args.length == 3) {
-            	if (args[0].toLowerCase().equals("-confiant")) {
-            		j = 1;
-            	} else {
+            int j = args.length == 3 ? 1 : 0;
+            for (int i = 0; i < 2; i++) {
+            	String[] joueurArgs = args[i+j].split("@");
+            	if (joueurArgs.length != 2) {
             		throw new ConfigurationException("Arguments invalides");
             	}
-            }
-            for (int i = 0; i < 2; i++) {
-                String[] joueurArgs = args[i+j].split("@");
                 String nom = joueurArgs[0];
                 String strategie = joueurArgs[1];
                 Strategie strat;
-                switch (strategie) {
+                switch (strategie.toLowerCase()) {
                 case "naif":
                 	strat = new StratNaif();
                     break;
@@ -56,14 +57,11 @@ public class Jouer {
                 joueurs[i] = new Joueur(nom, strat);
             }
 
+
             // Initialiser l'arbitre
             Arbitre arbitre = new Arbitre(joueurs[0], joueurs[1]);
             if (args.length == 3) {
-            	if (args[0].toLowerCase().equals("-confiant")) {
             		arbitre.setConfiant(true);
-            	} else {
-            		throw new ConfigurationException("Arguments invalides");
-            	}
             }
 
             // Lancer le jeu
