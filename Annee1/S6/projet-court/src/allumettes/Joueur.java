@@ -12,31 +12,10 @@ public class Joueur {
 		return strategie.getPrise(jeu, nom);
 	}
 	
-	public String getStrategieString() {
-		return strategie.getStratName();
-	}
-	
-	public Joueur(String nom, String strategie) {
+	public Joueur(String nom, Strategie strategie) {
 		this.nom = nom;
-        switch (strategie) {
-            case "naif":
-                this.strategie = new StratNaif();
-                break;
-            case "rapide":
-            	this.strategie = new StratRapide();
-                break;
-            case "expert":
-            	this.strategie = new StratExpert();
-                break;
-            case "humain":
-            	this.strategie = new StratHumain();
-            	break;
-            case "tricheur":
-            	this.strategie = new StratTricheur();
-            	break;
-            default:
-                throw new ConfigurationException("Stratégie inconnue : " + strategie);
-	    }
+       	this.strategie = strategie;
+
 	}
 	
 }

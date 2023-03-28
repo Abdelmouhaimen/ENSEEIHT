@@ -18,9 +18,6 @@ public interface Jeu {
 	 */
 	void retirer(int nbPrises) throws CoupInvalideException;
 
-	public boolean EstFini();
-
-	public void setFini();
 	
 
 }

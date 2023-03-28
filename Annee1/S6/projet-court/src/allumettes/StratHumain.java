@@ -3,7 +3,7 @@ package allumettes;
 import java.util.Scanner;
 
 public class StratHumain implements Strategie {
-	private String StratName = "humain";
+
 	private static Scanner entree = new Scanner(System.in);
 	@Override
 	public int getPrise(Jeu jeu, String nom) {
@@ -31,10 +31,6 @@ public class StratHumain implements Strategie {
 		}
 	}
 
-	@Override
-	public String getStratName() {
-		return StratName;
-	}
 	
 	private void tricherHumain(Jeu jeu) {
 		final int nbTriche = 1;

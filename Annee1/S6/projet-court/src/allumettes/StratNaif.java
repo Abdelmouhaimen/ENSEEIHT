@@ -2,7 +2,6 @@ package allumettes;
 import java.util.Random;
 
 public class StratNaif implements Strategie {
-	private String StratName = "naif";
 
 
 	@Override
@@ -12,9 +11,5 @@ public class StratNaif implements Strategie {
 		return rand.nextInt(upperbound) + 1;
 	}
 
-	@Override
-	public String getStratName() {
-		return StratName;
-	}
 
 }

@@ -1,11 +1,9 @@
 package allumettes;
 
 import java.util.Random;
-import java.util.Scanner;
-import java.util.Random;
+
 
 public class StratExpert implements Strategie {
-	private String StratName = "expert";
 	
 	@Override
 	public int getPrise(Jeu jeu, String nom) {
@@ -27,9 +25,5 @@ public class StratExpert implements Strategie {
 		return prise;
 	}
 
-	@Override
-	public String getStratName() {
-		return StratName;
-	}
 
 }

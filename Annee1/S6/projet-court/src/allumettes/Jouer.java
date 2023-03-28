@@ -16,7 +16,7 @@ public class Jouer {
 	public static void main(String[] args) {
 		try {
 			verifierNombreArguments(args);
-			 // Initialiser le jeu
+			// Initialiser le jeu
             Jeu jeuReel = new JeuReel(nb_alumettes_initial);
 
             // Initialiser les joueurs
@@ -33,7 +33,27 @@ public class Jouer {
                 String[] joueurArgs = args[i+j].split("@");
                 String nom = joueurArgs[0];
                 String strategie = joueurArgs[1];
-                joueurs[i] = new Joueur(nom, strategie.toLowerCase());
+                Strategie strat;
+                switch (strategie) {
+                case "naif":
+                	strat = new StratNaif();
+                    break;
+                case "rapide":
+                	strat = new StratRapide();
+                    break;
+                case "expert":
+                	strat = new StratExpert();
+                    break;
+                case "humain":
+                	strat = new StratHumain();
+                	break;
+                case "tricheur":
+                	strat = new StratTricheur();
+                	break;
+                default:
+                    throw new ConfigurationException("Stratégie inconnue : " + strategie);
+    	    }
+                joueurs[i] = new Joueur(nom, strat);
             }
 
             // Initialiser l'arbitre
@@ -47,13 +67,8 @@ public class Jouer {
             }
 
             // Lancer le jeu
-            while (!jeuReel.EstFini()) {
-                System.out.println(jeuReel);
-                arbitre.arbitrer(jeuReel);
-                if (!jeuReel.EstFini()) {
-                	System.out.println();
-                }
-            }
+            arbitre.arbitrer(jeuReel);
+
 
 			
 

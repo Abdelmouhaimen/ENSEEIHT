@@ -2,12 +2,11 @@ package allumettes;
 
 public class Arbitre {
 	
-	private Jeu jeu;
 	private boolean confiant;
 	Joueur[] joueurs = new Joueur[2];
 	private Joueur joueurCourant;
 	
-	public void arbitrer(Jeu jeuReel) {
+	public void arbitrerUnSeulCoup(JeuReel jeuReel) {
 		Jeu procuration = new Procuration(jeuReel);
 		int prise = 0;
 		boolean Abondon = false;
@@ -42,6 +41,17 @@ public class Arbitre {
 	        }
 	        this.changerJoueur();
 		}
+	}
+	
+	public void arbitrer(Jeu jeuReel) {
+		// Lancer le jeu
+        while (!((JeuReel) jeuReel).EstFini()) {
+            System.out.println(jeuReel);
+            this.arbitrerUnSeulCoup((JeuReel) jeuReel);
+            if (!((JeuReel) jeuReel).EstFini()) {
+            	System.out.println();
+            }
+        }
 	}
 	
 	private void changerJoueur() {

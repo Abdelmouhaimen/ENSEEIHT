@@ -26,7 +26,6 @@ public class JeuReel implements Jeu {
 		}
 	}
 
-	@Override
 	public boolean EstFini() {
 		return fini;
 	}
@@ -35,7 +34,6 @@ public class JeuReel implements Jeu {
 		return "Allumettes restantes : " + nb_alumettes;
 	}
 
-	@Override
 	public void setFini() {
 		fini = true;
 		

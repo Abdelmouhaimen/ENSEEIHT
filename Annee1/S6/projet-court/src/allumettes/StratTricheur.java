@@ -1,8 +1,7 @@
 package allumettes;
-import java.util.Random;
 
 public class StratTricheur implements Strategie {
-	private String StratName = "tricheur";
+
 
 
 	@Override
@@ -11,10 +10,6 @@ public class StratTricheur implements Strategie {
 		return 1;
 	}
 
-	@Override
-	public String getStratName() {
-		return StratName;
-	}
 	
 	
 	private void tricherTricheur(Jeu jeu) {

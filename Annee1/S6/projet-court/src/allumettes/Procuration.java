@@ -19,14 +19,12 @@ public class Procuration implements Jeu {
 
 	}
 
-	@Override
 	public boolean EstFini() {
-		return this.jeuReel.EstFini();
+		return ((JeuReel)this.jeuReel).EstFini();
 	}
 
-	@Override
 	public void setFini() {
-		this.jeuReel.setFini();
+		((JeuReel)this.jeuReel).setFini();
 
 	}
 
