@@ -1,0 +1,125 @@
+Problem:    LivraisionEcommerce
+Rows:       33
+Columns:    35 (35 integer, 30 binary)
+Non-zeros:  150
+Status:     INTEGER OPTIMAL
+Objective:  TotalDistance = 22 (MINimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 VisitEachCityOnce[ALPHA]
+                                   1             1             = 
+     2 VisitEachCityOnce[C1]
+                                   1             1             = 
+     3 VisitEachCityOnce[C2]
+                                   1             1             = 
+     4 VisitEachCityOnce[C3]
+                                   1             1             = 
+     5 VisitEachCityOnce[C4]
+                                   1             1             = 
+     6 VisitEachCityOnce[C5]
+                                   1             1             = 
+     7 LeaveEachCityOnce[ALPHA]
+                                   1             1             = 
+     8 LeaveEachCityOnce[C1]
+                                   1             1             = 
+     9 LeaveEachCityOnce[C2]
+                                   1             1             = 
+    10 LeaveEachCityOnce[C3]
+                                   1             1             = 
+    11 LeaveEachCityOnce[C4]
+                                   1             1             = 
+    12 LeaveEachCityOnce[C5]
+                                   1             1             = 
+    13 EliminateSubTours[C1,C2]
+                                  -4                           5 
+    14 EliminateSubTours[C1,C3]
+                                   5                           5 
+    15 EliminateSubTours[C1,C4]
+                                  -2                           5 
+    16 EliminateSubTours[C1,C5]
+                                  -3                           5 
+    17 EliminateSubTours[C2,C1]
+                                   4                           5 
+    18 EliminateSubTours[C2,C3]
+                                   3                           5 
+    19 EliminateSubTours[C2,C4]
+                                   2                           5 
+    20 EliminateSubTours[C2,C5]
+                                   1                           5 
+    21 EliminateSubTours[C3,C1]
+                                   1                           5 
+    22 EliminateSubTours[C3,C2]
+                                  -3                           5 
+    23 EliminateSubTours[C3,C4]
+                                   5                           5 
+    24 EliminateSubTours[C3,C5]
+                                  -2                           5 
+    25 EliminateSubTours[C4,C1]
+                                   2                           5 
+    26 EliminateSubTours[C4,C2]
+                                  -2                           5 
+    27 EliminateSubTours[C4,C3]
+                                   1                           5 
+    28 EliminateSubTours[C4,C5]
+                                   5                           5 
+    29 EliminateSubTours[C5,C1]
+                                   3                           5 
+    30 EliminateSubTours[C5,C2]
+                                   5                           5 
+    31 EliminateSubTours[C5,C3]
+                                   2                           5 
+    32 EliminateSubTours[C5,C4]
+                                   1                           5 
+    33 TotalDistance
+                                  22                             
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 x[ALPHA,C1]  *              1             0             1 
+     2 x[ALPHA,C2]  *              0             0             1 
+     3 x[ALPHA,C3]  *              0             0             1 
+     4 x[ALPHA,C4]  *              0             0             1 
+     5 x[ALPHA,C5]  *              0             0             1 
+     6 x[C1,ALPHA]  *              0             0             1 
+     7 x[C1,C2]     *              0             0             1 
+     8 x[C1,C3]     *              1             0             1 
+     9 x[C1,C4]     *              0             0             1 
+    10 x[C1,C5]     *              0             0             1 
+    11 x[C2,ALPHA]  *              1             0             1 
+    12 x[C2,C1]     *              0             0             1 
+    13 x[C2,C3]     *              0             0             1 
+    14 x[C2,C4]     *              0             0             1 
+    15 x[C2,C5]     *              0             0             1 
+    16 x[C3,ALPHA]  *              0             0             1 
+    17 x[C3,C1]     *              0             0             1 
+    18 x[C3,C2]     *              0             0             1 
+    19 x[C3,C4]     *              1             0             1 
+    20 x[C3,C5]     *              0             0             1 
+    21 x[C4,ALPHA]  *              0             0             1 
+    22 x[C4,C1]     *              0             0             1 
+    23 x[C4,C2]     *              0             0             1 
+    24 x[C4,C3]     *              0             0             1 
+    25 x[C4,C5]     *              1             0             1 
+    26 x[C5,ALPHA]  *              0             0             1 
+    27 x[C5,C1]     *              0             0             1 
+    28 x[C5,C2]     *              1             0             1 
+    29 x[C5,C3]     *              0             0             1 
+    30 x[C5,C4]     *              0             0             1 
+    31 u[C2]        *              5             1             6 
+    32 u[C1]        *              1             1             6 
+    33 u[C3]        *              2             1             6 
+    34 u[C4]        *              3             1             6 
+    35 u[C5]        *              4             1             6 
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

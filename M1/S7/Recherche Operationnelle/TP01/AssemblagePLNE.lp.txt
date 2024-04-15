@@ -1,0 +1,26 @@
+\* Problem: Fabrication de ciment *\
+
+Maximize
+Benefice: 700 Q1 + 300 Q2 
+
+Subject To
+CapaciteduPark : 2.5 Q1 + Q2 <= 1500
+CapaciteBatteries : Q1 <=700
+CapaciteHeur : 0.06 Q1   + 0.05 Q2  <=60
+
+
+\* To declare integer variables :   
+Integer 
+Q1  
+Q2   
+
+\* To declare binary variables :  
+\* Binary 
+\* Q1 
+\* Q2 
+
+End
+
+
+ 
+

@@ -1,0 +1,57 @@
+#  GLPK model file created by SUN for RO teaching
+
+###############################  Model ###############################
+
+###############################  Sets  ###############################
+
+set NODES; 
+
+################### Variables ###################
+
+var x{i in NODES, j in NODES} binary;
+var u{i in NODES} integer, >= 1, <= card(NODES);
+
+
+###################  Constants: Data to load   #########################
+
+param distance{i in NODES, j in NODES}; 
+
+################### Constraints ###################
+
+s.t. VisitEachCityOnce{i in NODES}:
+    sum{j in NODES: j != i} x[i, j] = 1;
+
+
+s.t. LeaveEachCityOnce{j in NODES}:
+    sum{i in NODES: i != j} x[i, j] = 1;
+
+	
+s.t. EliminateSubTours{i in NODES, j in NODES: i != j and i <> 'ALPHA' and j <> 'ALPHA'}:
+    (u[i] - u[j] + card(NODES) * x[i, j]) <= (card(NODES) - 1);
+    
+
+
+###### Objective ######
+
+minimize TotalDistance:
+    sum{i in NODES, j in NODES} x[i, j] * distance[i, j]; 
+
+#end;
+
+#default data
+
+data;
+
+set NODES := ALPHA C1 C2 C3 C4 C5;
+
+param distance:
+           ALPHA  C1  C2  C3  C4  C5 :=
+    ALPHA      0  1   1  10  12  12
+    C1         1  0   1   8  10  11
+    C2         1  1   0   8  11  10
+    C3        10  8   8   0   1   1
+    C4        12 10  11   1   0   1
+    C5        12 11  10   1   1   0;
+
+end;
+

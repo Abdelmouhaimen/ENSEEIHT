@@ -1,0 +1,39 @@
+Problem:    
+Rows:       3
+Columns:    2
+Non-zeros:  5
+Status:     OPTIMAL
+Objective:  Benefice = 438461.5385 (MAXimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 CapaciteduPark
+                    NU          1500                        1500       261.538 
+     2 CapaciteBatteries
+                    B        230.769                         700 
+     3 CapaciteHeur NU            60                          60       769.231 
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 Q1           B        230.769             0               
+     2 Q2           B        923.077             0               
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 7.11e-15 on row 3
+        max.rel.err = 5.87e-17 on row 3
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

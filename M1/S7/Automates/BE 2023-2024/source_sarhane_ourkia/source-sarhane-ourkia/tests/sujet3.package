@@ -1,0 +1,3 @@
+package sujet {
+    interface Sujet extends Name { }
+}

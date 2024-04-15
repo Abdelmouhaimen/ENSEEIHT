@@ -1,0 +1,81 @@
+#  GLPK model file created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+
+set COMMANDS ;
+set FLUIDS ;
+set MAGASINS ;
+
+################### Variables ###################
+
+var Q{ i in MAGASINS  , j in FLUIDS ,k in COMMANDS }, >=0;
+
+###################  Constants: Data to load   #########################
+
+param Demandes{ k in COMMANDS , j in FLUIDS};
+
+param Stocks{ i in MAGASINS , j in FLUIDS};
+
+param Couts{ i in MAGASINS , j in FLUIDS}; 
+
+################### Constraints ###################
+
+s.t.RespectStock{i in MAGASINS , j in FLUIDS } :
+    sum{k in COMMANDS } Q[i,j,k] <= Stocks[i,j];
+    
+
+s.t.RespectCommands {k in COMMANDS ,  j in FLUIDS } :
+    sum { i in MAGASINS } Q[i,j,k] =   Demandes[k,j] ;
+
+###### Objective ######
+
+minimize Cout :
+    sum{k in COMMANDS} sum{j in FLUIDS} sum{i in MAGASINS} Q[i,j,k] * Couts[i,j];
+
+
+
+
+#default data
+
+
+
+
+data ;
+
+
+
+set COMMANDS := 
+D1
+D2;
+
+set FLUIDS := 
+F1
+F2;
+
+set MAGASINS := 
+M1
+M2
+M3;
+
+
+param Demandes : F1 F2 :=
+D1 2 0
+D2 1 3;
+
+param Stocks : F1 F2 := 
+M1 2.5 1
+M2 1 2
+M3 2 1 ;
+
+
+param Couts : F1 F2 :=
+M1 1 1
+M2 2 3
+M3 3 2;
+
+end;
