@@ -1,0 +1,11 @@
+function [x,y] = iteration(x,y,Fx,Fy,gamma,A)
+floor(x)
+ind = sub2ind(size(Fx),floor(x),floor(y));
+size(ind)
+Bx = - gamma * Fx(ind);
+size(Bx)
+By = - gamma * Fy(ind);
+x = A*x + Bx;
+y = A*y + By;
+end
+
