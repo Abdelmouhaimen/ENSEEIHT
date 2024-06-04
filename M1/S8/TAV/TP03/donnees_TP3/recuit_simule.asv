@@ -1,0 +1,37 @@
+function k = recuit_simule(k,AD,beta,T)
+   
+    for i=1:size(k,1)
+        for j=1:size(k,2)
+            ks = k(i,j);
+            new_ks = ks;
+            while new_ks == ks
+                new_ks = randi(4);
+            end
+
+            masque = (size(k));
+            masque(max(i-1,1):min(i+1,size(k,1)),max(j-1,1):min(j+1,size(k,2))) = 1
+
+            sum = 0;
+            new_sum = 0;
+            for c=-1:0:1
+                for l=-1:0:1
+                    if i+c>= 0
+                        if j+l>=0
+                            sum = sum+ (ks~=k(i+c,j+l));
+                            new_sum = new_sum + (new_ks~=k(i+k,j+l));
+                        end
+                    end
+                end
+            end
+            
+            Us = AD(i,j,ks) + beta * sum;
+            new_Us = AD(i,j,new_ks) + beta * new_sum;
+            if new_Us < Us
+                k(i,j) = new_ks;
+            elseif rand < exp(-(new_Us - Us)/T)
+                k(i,j) = new_ks;
+            end
+        end
+    end
+end
+
