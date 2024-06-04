@@ -1,0 +1,91 @@
+/* Styles pour la barre horizontale en haut de la page */
+.welcome-bar {
+    background-color: #6a0dad; /* Violet */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  /* Styles pour les barres verticales à gauche et à droite */
+  .side-bars {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .side-bar {
+    width: calc(50% - 5px); /* Divise l'espace en deux avec une marge de 5px entre les barres */
+    background-color: #f0f0f0; /* Gris clair */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Styles pour les liens au centre de la page */
+  .center-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .center-links a {
+    display: inline-block;
+    background-color: #6a0dad; /* Violet */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+  
+  .center-links a:hover {
+    background-color: #4a0072; /* Violet plus foncé au survol */
+  }
+  
+
+.course-category {
+  max-width: 800px;
+  
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.course-category h1 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.course-category ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-category li {
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.course-category li:hover {
+  background-color: #e9ecef;
+}
+
+.course-category li svg {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.course-category li a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 18px;
+}
+
+.course-category li a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,47 @@
+
+.accueil-prof {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: slateblue;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .accueil-prof-container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%; 
+    max-width: 500px; 
+  }
+  
+  .accueil-prof h1 {
+    font-size: 24px;
+    color: slateblue;
+    margin-bottom: 30px;
+  }
+  
+  .link-button {
+    display: block;
+    background-color: white;
+    color: slateblue;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid violet;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 10px auto; 
+    width: 80%; 
+    cursor: pointer;
+  }
+  
+  .link-button:hover {
+    background-color: violet;
+    color: white;
+    border-color: white;
+  }
