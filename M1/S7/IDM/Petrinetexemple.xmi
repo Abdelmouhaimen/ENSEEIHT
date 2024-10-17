@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet" xsi:schemaLocation="http://petrinet PetriNet.ecore" name="developpement">
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.6" name="Conception_ready" jetons="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.9" linksToEntree="//@petrinetelement.8" name="Conception_running"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.44 //@petrinetelement.46" linksToEntree="//@petrinetelement.10" name="Conception_finished"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.45 //@petrinetelement.47" linksToEntree="//@petrinetelement.7" name="Conception_started"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.7 //@petrinetelement.8" linksToEntree="//@petrinetelement.6 //@petrinetelement.54 //@petrinetelement.56" name="Conception_start"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.10 //@petrinetelement.55 //@petrinetelement.57" linksToEntree="//@petrinetelement.9" name="Conception_finish"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.4" entree="//@petrinetelement.0" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.3" entree="//@petrinetelement.4" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.1" entree="//@petrinetelement.4" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.5" entree="//@petrinetelement.1" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.2" entree="//@petrinetelement.5" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.17" name="RedactionDoc_ready" jetons="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.20" linksToEntree="//@petrinetelement.19" name="RedactionDoc_running"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToEntree="//@petrinetelement.21" name="RedactionDoc_finished"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToEntree="//@petrinetelement.18" name="RedactionDoc_started"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.18 //@petrinetelement.19" linksToEntree="//@petrinetelement.17 //@petrinetelement.45 //@petrinetelement.58 //@petrinetelement.60" name="RedactionDoc_start"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.21 //@petrinetelement.59 //@petrinetelement.61" linksToEntree="//@petrinetelement.20 //@petrinetelement.44" name="RedactionDoc_finish"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.15" entree="//@petrinetelement.11" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.14" entree="//@petrinetelement.15" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.12" entree="//@petrinetelement.15" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.16" entree="//@petrinetelement.12" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.13" entree="//@petrinetelement.16" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.28" name="Programmation_ready" jetons="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.31" linksToEntree="//@petrinetelement.30" name="Programmation_running"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.48" linksToEntree="//@petrinetelement.32" name="Programmation_finished"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToEntree="//@petrinetelement.29" name="Programmation_started"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.29 //@petrinetelement.30" linksToEntree="//@petrinetelement.28 //@petrinetelement.46 //@petrinetelement.62 //@petrinetelement.64" name="Programmation_start"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.32 //@petrinetelement.63 //@petrinetelement.65" linksToEntree="//@petrinetelement.31" name="Programmation_finish"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.26" entree="//@petrinetelement.22" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.25" entree="//@petrinetelement.26" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.23" entree="//@petrinetelement.26" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.27" entree="//@petrinetelement.23" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.24" entree="//@petrinetelement.27" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.39" name="RedactionTests_ready" jetons="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.42" linksToEntree="//@petrinetelement.41" name="RedactionTests_running"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToEntree="//@petrinetelement.43" name="RedactionTests_finished"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToEntree="//@petrinetelement.40" name="RedactionTests_started"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.40 //@petrinetelement.41" linksToEntree="//@petrinetelement.39 //@petrinetelement.47 //@petrinetelement.66 //@petrinetelement.68" name="RedactionTests_start"/>
+  <petrinetelement xsi:type="petrinet:Transition" linksToSortie="//@petrinetelement.43 //@petrinetelement.67 //@petrinetelement.69" linksToEntree="//@petrinetelement.42 //@petrinetelement.48" name="RedactionTests_finish"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.37" entree="//@petrinetelement.33" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.36" entree="//@petrinetelement.37" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.34" entree="//@petrinetelement.37" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.38" entree="//@petrinetelement.34" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.35" entree="//@petrinetelement.38" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.16" entree="//@petrinetelement.2" poids="1" type="readArc"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.15" entree="//@petrinetelement.3" poids="1" type="readArc"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.26" entree="//@petrinetelement.2" poids="1" type="readArc"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.37" entree="//@petrinetelement.3" poids="1" type="readArc"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.38" entree="//@petrinetelement.24" poids="1" type="readArc"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.54" linksToEntree="//@petrinetelement.55" name="concepteur" jetons="3"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.62" linksToEntree="//@petrinetelement.63" name="developpeur" jetons="2"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.56 //@petrinetelement.58 //@petrinetelement.64 //@petrinetelement.66" linksToEntree="//@petrinetelement.57 //@petrinetelement.59 //@petrinetelement.65 //@petrinetelement.67" name="machine" jetons="4"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.60" linksToEntree="//@petrinetelement.61" name="redacteur" jetons="1"/>
+  <petrinetelement xsi:type="petrinet:Place" linksToSortie="//@petrinetelement.68" linksToEntree="//@petrinetelement.69" name="testeur" jetons="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.4" entree="//@petrinetelement.49" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.49" entree="//@petrinetelement.5" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.4" entree="//@petrinetelement.51" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.51" entree="//@petrinetelement.5" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.15" entree="//@petrinetelement.51" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.51" entree="//@petrinetelement.16" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.15" entree="//@petrinetelement.52" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.52" entree="//@petrinetelement.16" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.26" entree="//@petrinetelement.50" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.50" entree="//@petrinetelement.27" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.26" entree="//@petrinetelement.51" poids="3"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.51" entree="//@petrinetelement.27" poids="3"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.37" entree="//@petrinetelement.51" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.51" entree="//@petrinetelement.38" poids="2"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.37" entree="//@petrinetelement.53" poids="1"/>
+  <petrinetelement xsi:type="petrinet:Edge" sortie="//@petrinetelement.53" entree="//@petrinetelement.38" poids="1"/>
+</petrinet:PetriNet>

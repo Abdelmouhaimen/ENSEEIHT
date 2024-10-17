@@ -1,0 +1,36 @@
+import 'PetriNet.ecore'
+
+package petrinet
+
+
+context Place
+inv jetonsValid: self.jetons >= 0
+
+inv nomeUnique: self.PetriNet.petrinetelement
+               ->select(p | p.oclIsKindOf(Place))
+               ->collect(p | p.oclAsType(Place))
+               ->forAll(w | self = w or self.name <> w.name)
+
+context Edge
+inv poidsValid: self.poids >= 1
+
+context Edge
+inv arcValid: self.sortie.oclIsTypeOf(Place) <> self.entree.oclIsTypeOf(Place)
+
+context PetriNet
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+context Place
+inv nomeValid: self.name.size() > 1
+
+context Transition 
+inv nomTransitionNomUnique : self.PetriNet.petrinetelement
+               ->select(p | p.oclIsKindOf(Transition))
+               ->collect(p | p.oclAsType(Transition))
+               ->forAll(w | self = w or self.name <> w.name)
+
+
+
+
+endpackage

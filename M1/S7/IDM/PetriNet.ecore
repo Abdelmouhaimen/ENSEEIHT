@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="petrinet" nsURI="http://petrinet" nsPrefix="petrinet">
+  <eClassifiers xsi:type="ecore:EEnum" name="arcType">
+    <eLiterals name="normal"/>
+    <eLiterals name="readArc" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNetElement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="#//PetriNetElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linksToSortie" upperBound="-1"
+        eType="#//Edge" eOpposite="#//Edge/entree"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linksToEntree" upperBound="-1"
+        eType="#//Edge" eOpposite="#//Edge/sortie"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//PetriNetElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sortie" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/linksToEntree"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entree" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/linksToSortie"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="poids" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//arcType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petrinetelement" upperBound="-1"
+        eType="#//PetriNetElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jetons" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Node"/>
+</ecore:EPackage>

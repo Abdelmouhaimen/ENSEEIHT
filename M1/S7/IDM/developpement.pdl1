@@ -1,0 +1,32 @@
+process developpement {
+	rs concepteur 3
+	rs developpeur 2
+	rs machine 4
+	rs redacteur 1
+	rs testeur 2
+	
+	wd Conception amountRessources (
+		value 2 ofRessource concepteur
+		value 2 ofRessource machine
+	)
+	
+	wd RedactionDoc amountRessources (
+		value 1 ofRessource machine
+		value 1 ofRessource redacteur
+	)
+	
+	wd Programmation amountRessources (
+		value 2 ofRessource developpeur
+		value 3 ofRessource machine
+	)
+	
+	wd RedactionTests amountRessources (
+		value 2 ofRessource machine
+		value 1 ofRessource testeur
+	)
+	
+	ws f2f from Conception to RedactionDoc
+	ws f2s from Conception to Programmation
+	ws f2f from Programmation to RedactionTests
+	ws f2f from RedactionDoc to RedactionTests
+}
