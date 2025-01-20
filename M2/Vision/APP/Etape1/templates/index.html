@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Interpolation</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">>
+
+</head>
+<body>
+
+     <div class="container">
+        <div >
+            <div id="info">Start Adding points and the path will be generated.</div>
+            <button id="uploadTexture">Upload Texture</button>
+            <button id="uploadBackground">Upload Background</button>
+            <button id="generatePath" disabled>Generate Path</button>
+        </div>
+        <div id="images-container">
+            <canvas id="canvas" width="3000" height="3000"></canvas>
+            <img id="processedImage" alt="Processed Image">
+        </div>
+    </div>
+    
+    <script>
+        
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const uploadTextureBtn = document.getElementById('uploadTexture');
+        const uploadBackgroundBtn = document.getElementById('uploadBackground');
+        const generatePathBtn = document.getElementById('generatePath');
+        const processedImage = document.getElementById('processedImage');
+        let textureImage = null;
+        let backgroundImage = null;
+        let points = [];
+
+        // Local Upload for Texture
+        uploadTextureBtn.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                
+                if (file) {
+                    textureImage = file;
+                    console.log("Texture loaded locally.");
+                    uploadTextureBtn.textContent = "Texture Uploaded";
+                    // if texture and background uploaded, enable generate path button
+                    if (textureImage && backgroundImage) {
+                        generatePathBtn.disabled = false;
+                    }
+                }
+            });
+            input.click();
+        });
+
+
+
+        // Local Upload for Background
+        uploadBackgroundBtn.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (file) {
+                    backgroundImage = file;
+                    console.log("Background loaded locally.");
+                    uploadBackgroundBtn.textContent = "Background Uploaded";
+                    // if texture and background uploaded, enable generate path button
+                    if (textureImage && backgroundImage) {
+                        generatePathBtn.disabled = false;
+                    }
+                }
+            });
+
+            input.click();
+            
+        });
+        
+        // Draw the points and path on the canvas
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            
+            // Draw the points
+            points.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p[0], p[1], 5, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+        }
+
+        // Add point on click
+        canvas.addEventListener('click', function(event) {
+            const rect = canvas.getBoundingClientRect();
+            const x = (event.clientX - rect.left)*5;
+            const y = (event.clientY - rect.top)*5;
+            points.push([x, y]);
+            draw();
+            if (points.length >= 2) {
+                // Send points to the backend for interpolation
+                fetch('/interpolate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ points: points })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        // Draw the interpolated path
+                        const interpolatedPoints = data.interpolated_points;
+                        ctx.strokeStyle = 'lime';
+                        ctx.lineWidth = 10;
+                        ctx.beginPath();
+                        ctx.moveTo(interpolatedPoints[0][0], interpolatedPoints[0][1]);
+                        interpolatedPoints.forEach(p => {
+                            ctx.lineTo(p[0], p[1]);
+                        });
+                        ctx.stroke();
+
+                        // Draw the left boundary
+                        const leftBoundary = data.left_boundary;
+                        ctx.strokeStyle = 'red';
+                        ctx.lineWidth = 10;
+                        ctx.beginPath();
+                        ctx.moveTo(leftBoundary[0][0], leftBoundary[0][1]);
+                        leftBoundary.forEach(p => {
+                            ctx.lineTo(p[0], p[1]);
+                        });
+                        ctx.stroke();
+
+                        // Draw the right boundary
+                        const rightBoundary = data.right_boundary;
+                        ctx.strokeStyle = 'red';
+                        ctx.lineWidth = 10;
+                        ctx.beginPath();
+                        ctx.moveTo(rightBoundary[0][0], rightBoundary[0][1]);
+                        rightBoundary.forEach(p => {
+                            ctx.lineTo(p[0], p[1]);
+                        });
+                        ctx.stroke();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+        
+        // Generate Path and Send Background to Backend
+        generatePathBtn.addEventListener('click', () => {
+            const formData = new FormData();
+            formData.append('texture', textureImage);
+            formData.append('background', backgroundImage);
+
+            fetch('/process_image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                processedImage.src = url;
+                processedImage.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+    </script>
+</body>
+</html>
