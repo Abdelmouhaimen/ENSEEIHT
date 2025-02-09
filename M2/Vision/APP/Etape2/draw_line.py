@@ -7,8 +7,9 @@ from shapely.geometry.polygon import Polygon
 
 from time import sleep
 
-road_width = 3
+road_width = 9
 cell_size = 500
+canvas_size_hw = 7000
 
 # Global variables
 points = []  # To store clicked points
@@ -77,8 +78,8 @@ def mouse_callback(event, x, y, flags, param):
     """
     Mouse callback to capture points on mouse clicks.
     """
-    global points, canvas
-
+    global points, canvas, counter
+    counter +=1
     if event == cv2.EVENT_LBUTTONDOWN:
         points.append((x, y))
         # Draw the point on the canvas
@@ -88,16 +89,18 @@ def mouse_callback(event, x, y, flags, param):
         canvas_copy = canvas.copy()
         canvas_with_road = draw_interpolated_road(canvas_copy, points)
         cv2.imshow(window_name, canvas_with_road)
+        # save the image to folder images
+        #cv2.imwrite("./images/road"+str(counter)+".png", canvas_with_road)
 
 def process_image(width, height):
     nb_ite_dilate = 0
-    file = "./Textures/texture3.png"
+    file = "./Textures/texture8.png"
     image = Image.open(file)
     mask_file = "./Textures/" + file.split('/')[-1].split('.')[-2] + "_masque.png"
     mask = Image.open(mask_file).convert("L")  # Convert mask to grayscale
 
     # Create a blank canvas (3000x3000 pixels)
-    canvas_size = (6000, 6000)
+    canvas_size = (canvas_size_hw, canvas_size_hw)
     canvas = Image.new("L", canvas_size, color=0)
     canvas_colored = Image.new("RGB", canvas_size, color=(0, 0, 0))
 
@@ -110,7 +113,7 @@ def process_image(width, height):
     mask = mask.resize((cell_size, cell_size))
 
     # Define the path polygon
-    resize_factor = 6000/ height
+    resize_factor = canvas_size_hw/ height
     path_polygon = Polygon(np.concatenate([left_boundary*resize_factor, np.flip(right_boundary*resize_factor, axis=0)]))
 
     # Place the image in the grid
@@ -184,6 +187,8 @@ def draw(h, w,colors):
     global canvas
     global left_boundary, right_boundary
     global width, height
+    global counter
+    counter = 0
     width, height = h, w
 
     canvas = (colors*255).reshape((height, width, 3), order="F").astype(np.uint8)

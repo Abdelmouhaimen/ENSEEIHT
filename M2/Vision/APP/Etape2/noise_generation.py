@@ -37,9 +37,9 @@ def map_colored(width=200, height = 200):
             return [1, 1, 1]  # Blanc pour la neige
 
     # Application des couleurs
-    colors = np.array([altitude_to_color(a) for a in altitude_map.flatten(order="F")])
+    colors = np.array([altitude_to_color(a) for a in altitude_map.flatten()])
 
-    return width, height, altitude_map, colors
+    return width, height, altitude_map.T, colors
 
 
 
